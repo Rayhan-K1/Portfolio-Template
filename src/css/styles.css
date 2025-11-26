@@ -1,0 +1,268 @@
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+.zoom {
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+.zoom:hover {
+    transform: scale(1.1) !important;
+}
+
+  #app {
+    overflow-x: hidden;
+  }
+  
+  nav {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the navbar */
+  }
+  
+  nav a {
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  .video-container {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 2em; /* Adjust the font size as needed */
+    padding: 20px;
+    border: 5px solid white; /* Thick white border */
+    border-radius: 10px; /* Adds rounded corner on top right */
+  }
+  
+  .video-container .gradient-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%; /* Adjust the height of the gradient overlay */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, white 100%);
+    z-index: 10;
+  }
+  
+  .content-area {
+    min-height: 100vh; /* At least viewport height */
+    background-color: white;
+  }
+
+  .page-content {
+    min-height: 100vh;
+  }
+
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #56baed;
+    content: "";
+    transition: width 0.2s;
+}
+
+.underlineHover:hover {
+    color: #0d0d0d;
+}
+
+.underlineHover:hover:after {
+    width: 100%;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.322); /* White background with some opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #555;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* #routerView {
+    background: linear-gradient(to bottom, 
+    white 60%, 
+    lightblue 85%, 
+    rgb(101, 206, 241));
+} */
+
+.arrow-down {
+    position: absolute;
+    bottom: 360px; /* Position from the bottom of the container */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px; /* Width of the arrow container */
+    height: 40px; /* Height of the arrow container */
+    cursor: pointer; /* Changes the cursor on hover */
+}
+
+.arrow-down::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 30px; /* Size of the arrowhead */
+    height: 30px; /* Size of the arrowhead */
+    border-left: 4px solid rgb(255, 255, 255); /* Arrow color */
+    border-bottom: 4px solid rgb(255, 255, 255); /* Arrow color */
+    animation: pulsate 1s ease-in-out infinite;
+}
+
+@keyframes pulsate {
+    0% {
+      transform: translateX(-50%) scale(1) rotate(314deg);
+    }
+    50% {
+      transform: translateX(-50%) scale(1.1) rotate(314deg); 
+    }
+    100% {
+      transform: translateX(-50%) scale(1) rotate(314deg);
+    }
+  }
+
+  li {
+    list-style: disc;
+  }

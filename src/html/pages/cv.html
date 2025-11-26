@@ -1,0 +1,150 @@
+<div class="page-content" id="LandingWrapper"  v-if="isContentLoaded">
+    <div class="container mx-auto p-10 border">
+      <div class="flex flex-wrap md:flex-nowrap">
+        <div class="w-full md:w-1/2 flex items-center bg-gray-100">
+            <h1 class="text-6xl font-bold text-gray-800 mx-auto py-20">My<br>Personal<br>Statement</h1>
+        </div>
+        <div class="w-full md:w-1/2 p-8">
+            <p class="text-lg text-gray-700">
+              I am an ambitious and confident individual with a strong drive for success. I possess excellent communication skills and have a proven track record of success in performance-based environments. My ability to adapt and learn quickly to new situations and my drive to excel make me an asset to any team. My experience working in fast paced environments has equipped me with the skills and knowledge needed to become a top performer in any environment I enter. I am excited about the opportunity to demonstrate my skill and work rate.
+            </p>
+        </div>
+    </div>  
+    </div>
+    <div class="container mx-auto p-10 border my-10">
+    <div class="flex flex-wrap md:flex-nowrap">
+             <!-- Grid Section (Left Side) -->
+      <div class="w-full md:w-1/2 p-8">
+          <div class="grid grid-cols-3 gap-4">
+            <!-- Trigger Button -->
+              <div class="p-4 bg-gray-200 rounded-lg zoom" v-for="experience in workExperience" v-on:click="selectWorkExperience(experience)">
+                  <b class="text-lg">{{experience.Name}}</b> - <i>{{experience.FullTime ? 'Full Time' : 'Part Time'}}</i> <br><br> {{experience.Date}}<br>({{calculateDate(experience.Date)}})
+              </div>
+          </div>
+      </div>
+      
+      <!-- Title Section (Right Side) -->
+      <div class="w-full md:w-1/2 flex items-center bg-gray-100">
+        <h1 class="text-6xl font-bold text-gray-800 mx-auto py-20">Work<br>Experience</h1>
+      </div>
+    </div>
+  </div>
+    <div class="container mx-auto p-10 border my-10">
+      <div class="w-full bg-gray-100 mb-8 py-8 text-center">
+          <h2 class="text-6xl font-bold text-gray-800 mb-6">Education</h2>
+      </div>
+      <div class="flex flex-wrap md:flex-nowrap">
+        
+        <!-- Left Column -->
+        <div class="w-full md:w-1/2 bg-gray-100 p-8 zoom" v-on:click="selectEducation('left')">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">BSc. Computer Games Design</h2>
+            <p class="text-2xl text-gray-700 mb-4">Establishment: <b>Staffordshire University</b></p>
+            <p class="text-xl text-gray-700 mb-4">Forecasted Grade: <b>First Class Honours</b></p>
+            <p class="text-base text-gray-700 mb-4">09/2021 - 07/2024</p>
+        </div>
+    
+        <!-- Right Column -->
+        <div class="w-full md:w-1/2 bg-white p-8 zoom" v-on:click="selectEducation('right')">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">Level 4 Computing</h2>
+            <p class="text-2xl text-gray-700 mb-4">Establishment: <b>University Of London</b></p>
+            <p class="text-xl text-gray-700 mb-4">Grade: <b>First Class Honours</b></p>
+            <p class="text-base text-gray-700">07/2020 - 07/2021</p>
+        </div>
+    
+      </div>
+  </div>
+    <div class="container mx-auto p-10 border my-10">
+      <div class="w-full bg-gray-100 mb-8 p-8">
+        <h2 class="text-6xl font-bold text-gray-800 mb-8">Additional Information</h2>
+        <div class="flex justify-between bg-white p-5">
+          <div class="w-1/3">
+            <p class="text-2xl text-gray-700 mb-4"><span class="text-4xl font-bold"> Hobbies:</span>
+              <ul class="ml-5">
+                <li>Gaming</li>
+                <li>Programming</li>
+                <li>Combat Sports</li>
+                <li>Watching TV Shows/Movies</li>
+                <li>Reading</li>
+              </ul>
+            </p>
+          </div>
+          <div class="w-1/3">
+            <p class="text-2xl text-gray-700 mb-4"><span class="text-4xl font-bold"> Skills:</span>
+              <ul class="ml-5">
+                <li>Video Editing</li>
+                <li>Fluent In Arabic (Writing, Reading and Speaking)</li>
+                <li>Public Speaking</li>
+                <li>Debating</li>
+                <li>Team Work</li>
+              </ul>
+            </p>
+          </div>
+          <div class="w-1/3">
+            <p class="text-2xl text-gray-700 mb-4"><span class="text-4xl font-bold"> Achievements:</span>
+              <ul class="ml-5">
+                <li>Achieved 92% (First Class Honours) for Junior Collaborative Game Development and Testing module</li>
+                <li>Duke of Edinburgh - Bronze</li>
+                <li>Codecademy Python 3.0 Certificate Award </li>
+                <li>Worked as part of a team that published a game (Prepare To Dine) </li>
+              </ul>
+            </p>
+          </div>
+      </div>
+      </div>
+  </div>
+    <div class="container mx-auto p-10 border my-10">
+      <a href="src/resources/cv.docx" download class="inline-block w-full bg-gray-400 text-white font-bold py-2 px-4 rounded hover:bg-gray-500 transition-colors duration-150 text-center">
+        Download Full CV.pdf
+    </a>    
+  </div>
+  <!-- Modal Background -->
+  <div id="modal-workExperience" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center" aria-hidden="true" v-if="selectedExperience">
+
+    <!-- Modal Content -->
+    <div class="transform transition-all scale-95 opacity-0 p-5 border w-96 shadow-lg rounded-md bg-white h-[50vh] w-[30vw]" id="modal-content">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center text-center">
+            <h4 class="text-lg font-bold text-center">{{selectedExperience.Name}}</h4>
+            <button v-on:click="toggleWorkExperienceModal()" class="text-black close-modal">&times;</button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="my-5">
+            <ul>
+              <li v-for="data in selectedExperience.Data"> - {{data}}</li>
+            </ul>
+          </div>
+    </div>
+</div>
+  <div id="modal-education" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center" aria-hidden="true" v-if="selectedEducation">
+
+    <!-- Modal Content -->
+    <div class="transform transition-all scale-95 opacity-0 p-5 border w-96 shadow-lg rounded-md bg-white h-[50vh] w-[30vw]" id="modal-content">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center text-center">
+            <button v-on:click="toggleEducationModal()" class="text-black close-modal">&times;</button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="my-5">
+            <ul>
+              <div class="max-w-md mx-auto">
+                <template v-if="educationState == 'init'">
+                  <!-- List container with border -->
+                  <ul class="border border-gray-300 rounded-lg">
+                    <!-- Loop through each item in the items array -->
+                    <li v-for="(ed, index) in selectedEducation.Data" class="border-b border-gray-200 last:border-b-0 p-2 text-center font-bold cursor-pointer zoom" style="list-style: none;"  v-on:click="selectEducationData(ed);">
+                      {{ ed.Name }}
+                    </li>
+                  </ul>
+                </template>
+                <template v-if="selectedEducationData ? educationState == selectedEducationData.ID : false">
+                  <div>123</div>
+                </template>
+    
+              </div>
+            </ul>
+          </div>
+    </div>
+</div>
+</div>
